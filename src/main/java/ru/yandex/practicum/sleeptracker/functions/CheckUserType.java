@@ -27,10 +27,10 @@ public class CheckUserType implements Function<List<SleepSession>, Result> {
 
         nightSleepSessions.forEach(session -> {
             if (session.getAsleepTime().toLocalTime().isAfter(owlAsleepTime)
-            && session.getAwakeTime().toLocalTime().isAfter(owlAwakeTime)) {
+                    && session.getAwakeTime().toLocalTime().isAfter(owlAwakeTime)) {
                 owlNights.incrementAndGet();
             } else if (session.getAsleepTime().toLocalTime().isBefore(larkAsleepTime)
-            && session.getAwakeTime().toLocalTime().isBefore(larkAwakeTime)) {
+                    && session.getAwakeTime().toLocalTime().isBefore(larkAwakeTime)) {
                 larkNights.incrementAndGet();
             } else {
                 pigeonNights.incrementAndGet();
