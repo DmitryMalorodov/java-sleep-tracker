@@ -30,6 +30,9 @@ public class Helper {
             if (session.getAsleepTime().getDayOfMonth() != session.getAwakeTime().getDayOfMonth()) {
                 nightSleepSessions.add(session);
             } else if (!session.getAsleepTime().toLocalTime().isBefore(midnight)
+                    && !session.getAsleepTime().toLocalTime().isAfter(sixAm)) {
+                nightSleepSessions.add(session);
+            } else if (!session.getAwakeTime().toLocalTime().isBefore(midnight)
                     && !session.getAwakeTime().toLocalTime().isAfter(sixAm)) {
                 nightSleepSessions.add(session);
             }
