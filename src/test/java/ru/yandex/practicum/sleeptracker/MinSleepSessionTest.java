@@ -30,7 +30,7 @@ public class MinSleepSessionTest extends TestData {
     }
 
     @Test
-    @DisplayName("Проверка подсчета минимальной продолжительности сна (в минутах)")
+    @DisplayName("Проверка подсчета минимальной продолжительности сна")
     public void check() {
         SleepAnalysisResult result = new MinSleepSession().apply(sleepSessions);
         GeneralAssertions.isEqualTo(200, result.getResult(),
@@ -38,7 +38,8 @@ public class MinSleepSessionTest extends TestData {
     }
 
     @Test
-    @DisplayName("Проверка подсчета минимальной продолжительности сна (в минутах)")
+    @DisplayName("Проверка подсчета минимальной продолжительности сна," +
+            " когда существуют две одинаково минимальные сессии")
     public void check2() {
         SleepAnalysisResult result = new MinSleepSession().apply(sleepSessions2);
         GeneralAssertions.isEqualTo(200, result.getResult(),

@@ -35,7 +35,7 @@ public class QuantityBadSleepSessionTest extends TestData {
     }
 
     @Test
-    @DisplayName("Проверка подсчета количества сессий с плохим качеством сна")
+    @DisplayName("Проверка подсчета количества сессий с плохим качеством сна, когда таких сессий нет")
     public void check2() {
         SleepAnalysisResult result = new QuantityBadSleepSession().apply(sessionsWithoutBadQuality);
         GeneralAssertions.isEqualTo(0, result.getResult(),

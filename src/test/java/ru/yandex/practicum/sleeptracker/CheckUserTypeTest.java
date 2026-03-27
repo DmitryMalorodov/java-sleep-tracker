@@ -18,6 +18,7 @@ public class CheckUserTypeTest extends TestData {
     private static final List<SleepSession> sleepSessionsOwl = new ArrayList<>();
     private static final List<SleepSession> sleepSessionsLark = new ArrayList<>();
     private static final List<SleepSession> sleepSessionsPigeon = new ArrayList<>();
+    private static final List<SleepSession> sleepSessionsPigeon2 = new ArrayList<>();
 
     @BeforeAll
     public static void setUp() {
@@ -35,10 +36,13 @@ public class CheckUserTypeTest extends TestData {
         sleepSessionsPigeon.add(sleepSession15);
         sleepSessionsPigeon.add(sleepSession11);
         sleepSessionsPigeon.add(sleepSession13);
+
+        sleepSessionsPigeon2.add(sleepSession11);
+        sleepSessionsPigeon2.add(sleepSession12);
     }
 
     @Test
-    @DisplayName("Проверка определения хронотипа пользователя")
+    @DisplayName("Проверка получения хронотипа Сова, когда сессий данного типа больше остальных")
     public void check() {
         SleepAnalysisResult result = new CheckUserType().apply(sleepSessionsOwl);
         GeneralAssertions.isEqualTo(OWL.getUserType(), result.getResult(),
@@ -46,7 +50,7 @@ public class CheckUserTypeTest extends TestData {
     }
 
     @Test
-    @DisplayName("Проверка определения хронотипа пользователя")
+    @DisplayName("Проверка получения хронотипа Жаворонок, когда сессий данного типа больше остальных")
     public void check2() {
         SleepAnalysisResult result = new CheckUserType().apply(sleepSessionsLark);
         GeneralAssertions.isEqualTo(LARK.getUserType(), result.getResult(),
@@ -54,9 +58,17 @@ public class CheckUserTypeTest extends TestData {
     }
 
     @Test
-    @DisplayName("Проверка определения хронотипа пользователя")
+    @DisplayName("Проверка получения хронотипа Голубь, когда сессий данного типа больше остальных")
     public void check3() {
         SleepAnalysisResult result = new CheckUserType().apply(sleepSessionsPigeon);
+        GeneralAssertions.isEqualTo(PIGEON.getUserType(), result.getResult(),
+                "Ожидаемый хронотип пользователя '%s' не соответствует фактическому '%s'");
+    }
+
+    @Test
+    @DisplayName("Проверка получения хронотипа Голубь, когда кол-во сессий Совы и Жаворонка равно")
+    public void check4() {
+        SleepAnalysisResult result = new CheckUserType().apply(sleepSessionsPigeon2);
         GeneralAssertions.isEqualTo(PIGEON.getUserType(), result.getResult(),
                 "Ожидаемый хронотип пользователя '%s' не соответствует фактическому '%s'");
     }

@@ -37,7 +37,7 @@ public class QuantityNightsWithoutSleepTest extends TestData {
     }
 
     @Test
-    @DisplayName("Проверка подсчета количества бессонных ночей")
+    @DisplayName("Проверка, что ночь не считается бессонной, если задето начальное значение интервала - 00:00")
     public void check() {
         SleepAnalysisResult result = new QuantityNightsWithoutSleep().apply(nightSleepSessions);
         GeneralAssertions.isEqualTo(0, result.getResult(),
@@ -45,7 +45,7 @@ public class QuantityNightsWithoutSleepTest extends TestData {
     }
 
     @Test
-    @DisplayName("Проверка подсчета количества бессонных ночей")
+    @DisplayName("Проверка, что ночь не считается бессонной, если задето конечное значение интервала - 06:00")
     public void check2() {
         SleepAnalysisResult result = new QuantityNightsWithoutSleep().apply(nightSleepSessions2);
         GeneralAssertions.isEqualTo(0, result.getResult(),
@@ -53,7 +53,9 @@ public class QuantityNightsWithoutSleepTest extends TestData {
     }
 
     @Test
-    @DisplayName("Проверка подсчета количества бессонных ночей")
+    @DisplayName("Проверка, что ночь не считается бессонной," +
+            " если время пробуждения не задело начальное значение интервала - 00:00," +
+            "так как ночь еще не наступала")
     public void check3() {
         SleepAnalysisResult result = new QuantityNightsWithoutSleep().apply(notNightSleepSessions);
         GeneralAssertions.isEqualTo(0, result.getResult(),
@@ -61,7 +63,8 @@ public class QuantityNightsWithoutSleepTest extends TestData {
     }
 
     @Test
-    @DisplayName("Проверка подсчета количества бессонных ночей")
+    @DisplayName("Проверка, что ночь считается бессонной," +
+            " если время начала сна не задело конечное значение интервала - 06:00")
     public void check4() {
         SleepAnalysisResult result = new QuantityNightsWithoutSleep().apply(notNightSleepSessions2);
         GeneralAssertions.isEqualTo(1, result.getResult(),

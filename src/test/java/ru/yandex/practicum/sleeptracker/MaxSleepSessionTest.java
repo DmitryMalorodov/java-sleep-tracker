@@ -30,7 +30,7 @@ public class MaxSleepSessionTest extends TestData {
     }
 
     @Test
-    @DisplayName("Проверка подсчета максимальной продолжительности сна (в минутах)")
+    @DisplayName("Проверка подсчета максимальной продолжительности сна")
     public void check() {
         SleepAnalysisResult result = new MaxSleepSession().apply(sleepSessions);
         GeneralAssertions.isEqualTo(600, result.getResult(),
@@ -38,7 +38,8 @@ public class MaxSleepSessionTest extends TestData {
     }
 
     @Test
-    @DisplayName("Проверка подсчета максимальной продолжительности сна (в минутах)")
+    @DisplayName("Проверка подсчета максимальной продолжительности сна," +
+            " когда существуют две одинаково максимальные сессии")
     public void check2() {
         SleepAnalysisResult result = new MaxSleepSession().apply(sleepSessions2);
         GeneralAssertions.isEqualTo(600, result.getResult(),

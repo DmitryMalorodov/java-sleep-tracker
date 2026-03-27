@@ -30,7 +30,7 @@ public class QuantitySleepSessionsTest extends TestData {
     }
 
     @Test
-    @DisplayName("Проверка подсчета количества всех сессий сна")
+    @DisplayName("Проверка подсчета количества всех сессий сна, когда сессий нет")
     public void check2() {
         SleepAnalysisResult result = new QuantitySleepSessions().apply(new ArrayList<>());
         GeneralAssertions.isEqualTo(0, result.getResult(),

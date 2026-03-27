@@ -27,7 +27,7 @@ public class AverageSleepSessionTest extends TestData {
     }
 
     @Test
-    @DisplayName("Проверка средней продолжительности сна (в минутах)")
+    @DisplayName("Проверка вычисления средней продолжительности сна из одной сессии")
     public void check() {
         SleepAnalysisResult result = new AverageSleepSession().apply(sleepSessions);
         GeneralAssertions.isEqualTo(480, result.getResult(),
@@ -35,7 +35,7 @@ public class AverageSleepSessionTest extends TestData {
     }
 
     @Test
-    @DisplayName("Проверка средней продолжительности сна (в минутах)")
+    @DisplayName("Проверка вычисления средней продолжительности сна из множества сессий")
     public void check2() {
         SleepAnalysisResult result = new AverageSleepSession().apply(sleepSessions2);
         GeneralAssertions.isEqualTo(470, result.getResult(),
