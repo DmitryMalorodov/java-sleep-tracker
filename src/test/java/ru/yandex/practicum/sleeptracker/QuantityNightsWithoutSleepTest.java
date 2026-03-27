@@ -17,6 +17,7 @@ public class QuantityNightsWithoutSleepTest extends TestData {
     private static final List<SleepSession> nightSleepSessions2 = new ArrayList<>();
     private static final List<SleepSession> notNightSleepSessions = new ArrayList<>();
     private static final List<SleepSession> notNightSleepSessions2 = new ArrayList<>();
+    private static final List<SleepSession> notNightSleepSessions3 = new ArrayList<>();
     private static final List<SleepSession> sleepSessions = new ArrayList<>();
 
     @BeforeAll
@@ -29,6 +30,9 @@ public class QuantityNightsWithoutSleepTest extends TestData {
         nightSleepSessions2.add(sleepSession8);
         //НЕ ночная сессия сна
         notNightSleepSessions2.add(sleepSession9);
+        //добавление дат с переходом на новый месяц
+        notNightSleepSessions3.add(sleepSession16);
+        notNightSleepSessions3.add(sleepSession17);
 
         sleepSessions.add(sleepSession6);
         sleepSessions.add(sleepSession7);
@@ -76,6 +80,14 @@ public class QuantityNightsWithoutSleepTest extends TestData {
     public void check5() {
         SleepAnalysisResult result = new QuantityNightsWithoutSleep().apply(sleepSessions);
         GeneralAssertions.isEqualTo(2, result.getResult(),
+                "Ожидаемое кол-во бессонных ночей '%d' не соответствует фактическому '%d'");
+    }
+
+    @Test
+    @DisplayName("Проверка подсчета количества бессонных ночей при переходе на другой месяц")
+    public void check6() {
+        SleepAnalysisResult result = new QuantityNightsWithoutSleep().apply(notNightSleepSessions3);
+        GeneralAssertions.isEqualTo(1, result.getResult(),
                 "Ожидаемое кол-во бессонных ночей '%d' не соответствует фактическому '%d'");
     }
 }

@@ -97,4 +97,16 @@ public class TestData {
             LocalDateTime.of(2026, Month.JANUARY, 16, 9, 0),
             NORMAL
     );
+
+    static final SleepSession sleepSession16 = new SleepSession(
+            LocalDateTime.of(2026, Month.JANUARY, 30, 22, 0),
+            LocalDateTime.of(2026, Month.JANUARY, 31, 10, 0),
+            NORMAL
+    );
+
+    static final SleepSession sleepSession17 = new SleepSession(
+            LocalDateTime.of(2026, Month.FEBRUARY, 1, 22, 1),
+            LocalDateTime.of(2026, Month.FEBRUARY, 2, 9, 0),
+            NORMAL
+    );
 }
