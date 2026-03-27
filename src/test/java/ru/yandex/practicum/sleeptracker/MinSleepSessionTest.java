@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.yandex.practicum.sleeptracker.dto.SleepSession;
-import ru.yandex.practicum.sleeptracker.dto.results.SleepAnalysisResult;
+import ru.yandex.practicum.sleeptracker.dto.SleepAnalysisResult;
 import ru.yandex.practicum.sleeptracker.functions.MinSleepSession;
 import ru.yandex.practicum.sleeptracker.helpers.GeneralAssertions;
 

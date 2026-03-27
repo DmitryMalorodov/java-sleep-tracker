@@ -1,7 +1,7 @@
 package ru.yandex.practicum.sleeptracker;
 
-import ru.yandex.practicum.sleeptracker.dto.results.Result;
 import ru.yandex.practicum.sleeptracker.dto.SleepSession;
+import ru.yandex.practicum.sleeptracker.dto.SleepAnalysisResult;
 import ru.yandex.practicum.sleeptracker.exceptions.SleepSessionsNotFoundException;
 import ru.yandex.practicum.sleeptracker.functions.*;
 import ru.yandex.practicum.sleeptracker.helpers.Upload;
@@ -13,7 +13,7 @@ import java.util.function.Function;
 
 public class SleepTrackerApp {
     private static List<SleepSession> sleepSessions;
-    private static final List<Function<List<SleepSession>, Result>> functions = new ArrayList<>();
+    private static final List<Function<List<SleepSession>, SleepAnalysisResult>> functions = new ArrayList<>();
 
     static {
         functions.add(new QuantitySleepSessions());
@@ -34,7 +34,7 @@ public class SleepTrackerApp {
         }
 
         functions.forEach(function -> {
-            Result result = function.apply(sleepSessions);
+            SleepAnalysisResult result = function.apply(sleepSessions);
             System.out.println(String.format("%s: %s", result.getDescription(),
                     result.getResult()));
         });

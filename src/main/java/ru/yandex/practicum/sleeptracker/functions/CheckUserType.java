@@ -1,8 +1,7 @@
 package ru.yandex.practicum.sleeptracker.functions;
 
-import ru.yandex.practicum.sleeptracker.dto.results.Result;
 import ru.yandex.practicum.sleeptracker.dto.SleepSession;
-import ru.yandex.practicum.sleeptracker.dto.results.UserTypeResult;
+import ru.yandex.practicum.sleeptracker.dto.SleepAnalysisResult;
 import ru.yandex.practicum.sleeptracker.enums.UserType;
 import ru.yandex.practicum.sleeptracker.helpers.Helper;
 
@@ -11,14 +10,14 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 
-public class CheckUserType implements Function<List<SleepSession>, Result> {
+public class CheckUserType implements Function<List<SleepSession>, SleepAnalysisResult> {
     private static final LocalTime larkAsleepTime = LocalTime.of(22, 0);
     private static final LocalTime owlAsleepTime = LocalTime.of(23, 0);
     private static final LocalTime owlAwakeTime = LocalTime.of(9, 0);
     private static final LocalTime larkAwakeTime = LocalTime.of(7, 0);
 
     @Override
-    public UserTypeResult apply(List<SleepSession> sleepSessions) {
+    public SleepAnalysisResult apply(List<SleepSession> sleepSessions) {
         List<SleepSession> nightSleepSessions = Helper.getNightSleepSessions(sleepSessions);
 
         AtomicInteger owlNights = new AtomicInteger(0);
@@ -38,6 +37,6 @@ public class CheckUserType implements Function<List<SleepSession>, Result> {
         });
 
         UserType userType = UserType.getUserType(owlNights.get(), larkNights.get(), pigeonNights.get());
-        return new UserTypeResult(userType.getUserType(), "Хронотип пользователя");
+        return new SleepAnalysisResult(userType.getUserType(), "Хронотип пользователя");
     }
 }
