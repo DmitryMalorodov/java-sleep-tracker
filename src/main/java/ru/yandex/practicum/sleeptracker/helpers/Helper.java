@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Helper {
-    private static final LocalTime sixAm = LocalTime.of(6, 0);
-    private static final LocalTime midnight = LocalTime.MIDNIGHT;
+    private static final LocalTime SIX_AM = LocalTime.of(6, 0);
+    private static final LocalTime MIDNIGHT = LocalTime.MIDNIGHT;
 
     private Helper() {
     }
@@ -29,11 +29,11 @@ public class Helper {
         sleepSessions.forEach(session -> {
             if (session.getAsleepTime().getDayOfMonth() != session.getAwakeTime().getDayOfMonth()) {
                 nightSleepSessions.add(session);
-            } else if (!session.getAsleepTime().toLocalTime().isBefore(midnight)
-                    && !session.getAsleepTime().toLocalTime().isAfter(sixAm)) {
+            } else if (!session.getAsleepTime().toLocalTime().isBefore(MIDNIGHT)
+                    && !session.getAsleepTime().toLocalTime().isAfter(SIX_AM)) {
                 nightSleepSessions.add(session);
-            } else if (!session.getAwakeTime().toLocalTime().isBefore(midnight)
-                    && !session.getAwakeTime().toLocalTime().isAfter(sixAm)) {
+            } else if (!session.getAwakeTime().toLocalTime().isBefore(MIDNIGHT)
+                    && !session.getAwakeTime().toLocalTime().isAfter(SIX_AM)) {
                 nightSleepSessions.add(session);
             }
         });

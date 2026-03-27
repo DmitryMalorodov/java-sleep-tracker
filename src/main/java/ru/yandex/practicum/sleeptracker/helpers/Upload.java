@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Upload {
-    private static final DateTimeFormatter pattern = DateTimeFormatter.ofPattern("dd.MM.yy HH:mm");
+    private static final DateTimeFormatter PATTERN = DateTimeFormatter.ofPattern("dd.MM.yy HH:mm");
 
     public static List<SleepSession> uploadFile(String path) throws SleepSessionsNotFoundException, FileNotFoundException {
         List<SleepSession> sleepSessions = new ArrayList<>();
@@ -23,8 +23,8 @@ public class Upload {
             br.lines().forEach(sleepSession -> {
                 String[] sleepData = sleepSession.split(";");
                 sleepSessions.add(new SleepSession(
-                        LocalDateTime.parse(sleepData[0], pattern),
-                        LocalDateTime.parse(sleepData[1], pattern),
+                        LocalDateTime.parse(sleepData[0], PATTERN),
+                        LocalDateTime.parse(sleepData[1], PATTERN),
                         SleepQuality.getSleepQuantity(sleepData[2])
                 ));
             });

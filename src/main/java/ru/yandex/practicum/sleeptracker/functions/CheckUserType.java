@@ -12,10 +12,10 @@ import java.util.function.Function;
 
 public class CheckUserType implements Function<List<SleepSession>, SleepAnalysisResult> {
     private static final String FUNC_DESCRIPTION = "Хронотип пользователя";
-    private static final LocalTime larkAsleepTime = LocalTime.of(22, 0);
-    private static final LocalTime owlAsleepTime = LocalTime.of(23, 0);
-    private static final LocalTime owlAwakeTime = LocalTime.of(9, 0);
-    private static final LocalTime larkAwakeTime = LocalTime.of(7, 0);
+    private static final LocalTime LARK_ASLEEP_TIME = LocalTime.of(22, 0);
+    private static final LocalTime OWL_ASLEEP_TIME = LocalTime.of(23, 0);
+    private static final LocalTime OWL_AWAKE_TIME = LocalTime.of(9, 0);
+    private static final LocalTime LARK_AWAKE_TIME = LocalTime.of(7, 0);
 
     @Override
     public SleepAnalysisResult apply(List<SleepSession> sleepSessions) {
@@ -26,11 +26,11 @@ public class CheckUserType implements Function<List<SleepSession>, SleepAnalysis
         AtomicInteger pigeonNights = new AtomicInteger(0);
 
         nightSleepSessions.forEach(session -> {
-            if (session.getAsleepTime().toLocalTime().isAfter(owlAsleepTime)
-                    && session.getAwakeTime().toLocalTime().isAfter(owlAwakeTime)) {
+            if (session.getAsleepTime().toLocalTime().isAfter(OWL_ASLEEP_TIME)
+                    && session.getAwakeTime().toLocalTime().isAfter(OWL_AWAKE_TIME)) {
                 owlNights.incrementAndGet();
-            } else if (session.getAsleepTime().toLocalTime().isBefore(larkAsleepTime)
-                    && session.getAwakeTime().toLocalTime().isBefore(larkAwakeTime)) {
+            } else if (session.getAsleepTime().toLocalTime().isBefore(LARK_ASLEEP_TIME)
+                    && session.getAwakeTime().toLocalTime().isBefore(LARK_AWAKE_TIME)) {
                 larkNights.incrementAndGet();
             } else {
                 pigeonNights.incrementAndGet();
