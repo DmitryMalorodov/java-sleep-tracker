@@ -21,8 +21,8 @@ public class QuantityNightsWithoutSleep implements Function<List<SleepSession>, 
         allNights += Period.between(sleepSessions.getFirst().getAsleepTime().toLocalDate(),
                 sleepSessions.getLast().getAwakeTime().toLocalDate()).getDays();
 
-        List<SleepSession> nightSleepSessions = Helper.getNightSleepSessions(sleepSessions);
+        int nightSleepSessions = Helper.getNightSleepQuantity(sleepSessions);
 
-        return new SleepAnalysisResult(allNights - nightSleepSessions.size(), FUNC_DESCRIPTION);
+        return new SleepAnalysisResult(allNights - nightSleepSessions, FUNC_DESCRIPTION);
     }
 }
