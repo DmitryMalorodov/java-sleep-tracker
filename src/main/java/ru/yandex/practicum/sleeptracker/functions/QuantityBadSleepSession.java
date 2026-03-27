@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.function.Function;
 
 public class QuantityBadSleepSession implements Function<List<SleepSession>, SleepAnalysisResult> {
+    private static final String FUNC_DESCRIPTION = "Количество сессий с плохим качеством сна";
 
     @Override
     public SleepAnalysisResult apply(List<SleepSession> sleepSessions) {
@@ -15,6 +16,6 @@ public class QuantityBadSleepSession implements Function<List<SleepSession>, Sle
                 .filter(session -> session.getSleepQuality().equals(SleepQuality.BAD))
                 .toList();
 
-        return new SleepAnalysisResult(sessions.size(), "Количество сессий с плохим качеством сна");
+        return new SleepAnalysisResult(sessions.size(), FUNC_DESCRIPTION);
     }
 }

@@ -11,6 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 
 public class CheckUserType implements Function<List<SleepSession>, SleepAnalysisResult> {
+    private static final String FUNC_DESCRIPTION = "Хронотип пользователя";
     private static final LocalTime larkAsleepTime = LocalTime.of(22, 0);
     private static final LocalTime owlAsleepTime = LocalTime.of(23, 0);
     private static final LocalTime owlAwakeTime = LocalTime.of(9, 0);
@@ -37,6 +38,6 @@ public class CheckUserType implements Function<List<SleepSession>, SleepAnalysis
         });
 
         UserType userType = UserType.getUserType(owlNights.get(), larkNights.get(), pigeonNights.get());
-        return new SleepAnalysisResult(userType.getUserType(), "Хронотип пользователя");
+        return new SleepAnalysisResult(userType.getUserType(), FUNC_DESCRIPTION);
     }
 }

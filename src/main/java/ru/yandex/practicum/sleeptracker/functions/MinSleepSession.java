@@ -10,6 +10,7 @@ import java.util.function.Function;
 import static ru.yandex.practicum.sleeptracker.helpers.Helper.getSleepSessionsDurations;
 
 public class MinSleepSession implements Function<List<SleepSession>, SleepAnalysisResult> {
+    private static final String FUNC_DESCRIPTION = "Минимальная продолжительность сна (в минутах)";
 
     @Override
     public SleepAnalysisResult apply(List<SleepSession> sleepSessions) {
@@ -17,6 +18,6 @@ public class MinSleepSession implements Function<List<SleepSession>, SleepAnalys
                 .min(Duration::compareTo)
                 .orElseThrow();
 
-        return new SleepAnalysisResult((int) min.toMinutes(), "Минимальная продолжительность сна (в минутах)");
+        return new SleepAnalysisResult((int) min.toMinutes(), FUNC_DESCRIPTION);
     }
 }

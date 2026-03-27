@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.function.Function;
 
 public class QuantityNightsWithoutSleep implements Function<List<SleepSession>, SleepAnalysisResult> {
+    private static final String FUNC_DESCRIPTION = "Количество бессонных ночей";
 
     @Override
     public SleepAnalysisResult apply(List<SleepSession> sleepSessions) {
@@ -22,7 +23,6 @@ public class QuantityNightsWithoutSleep implements Function<List<SleepSession>, 
 
         List<SleepSession> nightSleepSessions = Helper.getNightSleepSessions(sleepSessions);
 
-        return new SleepAnalysisResult(allNights - nightSleepSessions.size(),
-                "Количество бессонных ночей");
+        return new SleepAnalysisResult(allNights - nightSleepSessions.size(), FUNC_DESCRIPTION);
     }
 }

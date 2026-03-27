@@ -7,9 +7,10 @@ import java.util.List;
 import java.util.function.Function;
 
 public class QuantitySleepSessions implements Function<List<SleepSession>, SleepAnalysisResult> {
+    private static final String FUNC_DESCRIPTION = "Количество сессий сна всего";
 
     @Override
     public SleepAnalysisResult apply(List<SleepSession> sleepSession) {
-        return new SleepAnalysisResult(sleepSession.size(), "Количество сессий сна всего");
+        return new SleepAnalysisResult(sleepSession.size(), FUNC_DESCRIPTION);
     }
 }
