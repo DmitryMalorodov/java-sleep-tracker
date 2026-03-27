@@ -1,6 +1,6 @@
 package ru.yandex.practicum.sleeptracker.exceptions;
 
-public class SleepSessionsNotFoundException extends Exception {
+public class SleepSessionsNotFoundException extends RuntimeException {
 
     public SleepSessionsNotFoundException(String message) {
         super(message);
