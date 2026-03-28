@@ -90,4 +90,10 @@ public class QuantityNightsWithoutSleepTest extends TestData {
         GeneralAssertions.isEqualTo(1, result.getResult(),
                 "Ожидаемое кол-во бессонных ночей '%d' не соответствует фактическому '%d'");
     }
+
+    @Test
+    @DisplayName("Проверка обработки ситуации, когда нет ни одной сессии сна")
+    public void check7() {
+        checkNoSessionsCase(new QuantityNightsWithoutSleep().apply(new ArrayList<>()));
+    }
 }

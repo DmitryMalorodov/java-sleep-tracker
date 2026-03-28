@@ -45,4 +45,10 @@ public class MinSleepSessionTest extends TestData {
         GeneralAssertions.isEqualTo(200, result.getResult(),
                 "Ожидаемая минимальная продолжительность сна '%d' не соответствует фактической '%d'");
     }
+
+    @Test
+    @DisplayName("Проверка обработки ситуации, когда нет ни одной сессии сна")
+    public void check3() {
+        checkNoSessionsCase(new MinSleepSession().apply(new ArrayList<>()));
+    }
 }

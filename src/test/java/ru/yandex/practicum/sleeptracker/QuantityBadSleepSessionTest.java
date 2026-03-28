@@ -41,4 +41,10 @@ public class QuantityBadSleepSessionTest extends TestData {
         GeneralAssertions.isEqualTo(0, result.getResult(),
                 "Ожидаемое кол-во сессий сна с плохим качеством '%d' не соответствует фактическому '%d'");
     }
+
+    @Test
+    @DisplayName("Проверка обработки ситуации, когда нет ни одной сессии сна")
+    public void check3() {
+        checkNoSessionsCase(new QuantityBadSleepSession().apply(new ArrayList<>()));
+    }
 }

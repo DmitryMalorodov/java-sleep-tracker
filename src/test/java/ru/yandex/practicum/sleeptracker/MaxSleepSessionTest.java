@@ -45,4 +45,10 @@ public class MaxSleepSessionTest extends TestData {
         GeneralAssertions.isEqualTo(600, result.getResult(),
                 "Ожидаемая максимальная продолжительность сна '%d' не соответствует фактической '%d'");
     }
+
+    @Test
+    @DisplayName("Проверка обработки ситуации, когда нет ни одной сессии сна")
+    public void check3() {
+        checkNoSessionsCase(new MaxSleepSession().apply(new ArrayList<>()));
+    }
 }

@@ -1,6 +1,8 @@
 package ru.yandex.practicum.sleeptracker;
 
+import ru.yandex.practicum.sleeptracker.dto.SleepAnalysisResult;
 import ru.yandex.practicum.sleeptracker.dto.SleepSession;
+import ru.yandex.practicum.sleeptracker.helpers.GeneralAssertions;
 
 import java.time.LocalDateTime;
 import java.time.Month;
@@ -111,4 +113,9 @@ public class TestData {
             LocalDateTime.of(2026, Month.FEBRUARY, 2, 9, 0),
             NORMAL
     );
+
+    void checkNoSessionsCase(SleepAnalysisResult result) {
+        GeneralAssertions.isEqualTo(NO_SESSION_MESSAGE, result.getResult(),
+                "Ожидаемое сообщение об отсутствии сессий '%s' не соответствует фактическому '%s'");
+    }
 }

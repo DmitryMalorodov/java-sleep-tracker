@@ -30,10 +30,8 @@ public class QuantitySleepSessionsTest extends TestData {
     }
 
     @Test
-    @DisplayName("Проверка подсчета количества всех сессий сна, когда сессий нет")
+    @DisplayName("Проверка обработки ситуации, когда нет ни одной сессии сна")
     public void check2() {
-        SleepAnalysisResult result = new QuantitySleepSessions().apply(new ArrayList<>());
-        GeneralAssertions.isEqualTo(NO_SESSION_MESSAGE, result.getResult(),
-                "Ожидаемое кол-во всех сессий сна '%s' не соответствует фактическому '%s'");
+        checkNoSessionsCase(new QuantitySleepSessions().apply(new ArrayList<>()));
     }
 }

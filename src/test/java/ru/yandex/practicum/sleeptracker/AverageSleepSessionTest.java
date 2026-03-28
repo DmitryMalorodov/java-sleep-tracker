@@ -41,4 +41,10 @@ public class AverageSleepSessionTest extends TestData {
         GeneralAssertions.isEqualTo(470, result.getResult(),
                 "Ожидаемая средняя продолжительность сна '%d' не соответствует фактической '%d'");
     }
+
+    @Test
+    @DisplayName("Проверка обработки ситуации, когда нет ни одной сессии сна")
+    public void check3() {
+        checkNoSessionsCase(new AverageSleepSession().apply(new ArrayList<>()));
+    }
 }

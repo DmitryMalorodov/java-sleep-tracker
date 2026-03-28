@@ -72,4 +72,10 @@ public class CheckUserTypeTest extends TestData {
         GeneralAssertions.isEqualTo(PIGEON.getUserType(), result.getResult(),
                 "Ожидаемый хронотип пользователя '%s' не соответствует фактическому '%s'");
     }
+
+    @Test
+    @DisplayName("Проверка обработки ситуации, когда нет ни одной сессии сна")
+    public void check5() {
+        checkNoSessionsCase(new CheckUserType().apply(new ArrayList<>()));
+    }
 }
