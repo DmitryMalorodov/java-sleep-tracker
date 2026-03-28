@@ -9,11 +9,14 @@ import java.time.Period;
 import java.util.List;
 import java.util.function.Function;
 
-public class QuantityNightsWithoutSleep implements Function<List<SleepSession>, SleepAnalysisResult> {
+public class QuantityNightsWithoutSleep extends Base implements Function<List<SleepSession>, SleepAnalysisResult> {
     private static final String FUNC_DESCRIPTION = "Количество бессонных ночей";
 
     @Override
     public SleepAnalysisResult apply(List<SleepSession> sleepSessions) {
+        SleepAnalysisResult result = checkSessions(sleepSessions, FUNC_DESCRIPTION);
+        if (result != null) return result;
+
         int allNights = 0;
         if (sleepSessions.getFirst().getAsleepTime().toLocalTime().isBefore(LocalTime.of(12, 0))) {
             allNights++;

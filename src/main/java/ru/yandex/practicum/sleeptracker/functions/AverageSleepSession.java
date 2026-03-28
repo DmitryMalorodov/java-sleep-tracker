@@ -8,11 +8,14 @@ import java.util.function.Function;
 
 import static ru.yandex.practicum.sleeptracker.helpers.Helper.getSleepSessionsDurations;
 
-public class AverageSleepSession implements Function<List<SleepSession>, SleepAnalysisResult> {
+public class AverageSleepSession extends Base implements Function<List<SleepSession>, SleepAnalysisResult> {
     private static final String FUNC_DESCRIPTION = "Средняя продолжительность сна (в минутах)";
 
     @Override
     public SleepAnalysisResult apply(List<SleepSession> sleepSessions) {
+        SleepAnalysisResult result = checkSessions(sleepSessions, FUNC_DESCRIPTION);
+        if (result != null) return result;
+
         int sum = getSleepSessionsDurations(sleepSessions).stream()
                 .mapToInt(duration -> (int) duration.toMinutes())
                 .sum();

@@ -9,11 +9,14 @@ import java.util.function.Function;
 
 import static ru.yandex.practicum.sleeptracker.helpers.Helper.getSleepSessionsDurations;
 
-public class MaxSleepSession implements Function<List<SleepSession>, SleepAnalysisResult> {
+public class MaxSleepSession extends Base implements Function<List<SleepSession>, SleepAnalysisResult> {
     private static final String FUNC_DESCRIPTION = "Максимальная продолжительность сна (в минутах)";
 
     @Override
     public SleepAnalysisResult apply(List<SleepSession> sleepSessions) {
+        SleepAnalysisResult result = checkSessions(sleepSessions, FUNC_DESCRIPTION);
+        if (result != null) return result;
+
         Duration max = getSleepSessionsDurations(sleepSessions).stream()
                 .max(Duration::compareTo)
                 .orElseThrow();

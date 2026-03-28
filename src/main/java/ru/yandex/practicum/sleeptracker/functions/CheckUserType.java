@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 
-public class CheckUserType implements Function<List<SleepSession>, SleepAnalysisResult> {
+public class CheckUserType extends Base implements Function<List<SleepSession>, SleepAnalysisResult> {
     private static final String FUNC_DESCRIPTION = "Хронотип пользователя";
     private static final LocalTime LARK_ASLEEP_TIME = LocalTime.of(22, 0);
     private static final LocalTime OWL_ASLEEP_TIME = LocalTime.of(23, 0);
@@ -19,6 +19,9 @@ public class CheckUserType implements Function<List<SleepSession>, SleepAnalysis
 
     @Override
     public SleepAnalysisResult apply(List<SleepSession> sleepSessions) {
+        SleepAnalysisResult result = checkSessions(sleepSessions, FUNC_DESCRIPTION);
+        if (result != null) return result;
+
         List<SleepSession> nightSleepSessions = Helper.getNightSleepSessions(sleepSessions);
 
         AtomicInteger owlNights = new AtomicInteger(0);

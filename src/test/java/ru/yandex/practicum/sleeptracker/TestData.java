@@ -8,6 +8,8 @@ import java.time.Month;
 import static ru.yandex.practicum.sleeptracker.enums.SleepQuality.*;
 
 public class TestData {
+    static final String NO_SESSION_MESSAGE = "Нет ни одной сессии сна для расчета";
+
     static final SleepSession sleepSession = new SleepSession(
             LocalDateTime.of(2026, Month.JANUARY, 1, 22, 0),
             LocalDateTime.of(2026, Month.JANUARY, 2, 6, 0),
